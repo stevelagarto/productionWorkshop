@@ -8,11 +8,23 @@ class Header extends Component {
       case null:
         return;
       case false:
-        return (
-          <li>
-            <a href={'http://localhost:5000/auth/google'}>Login With Google</a>
-          </li>
-        );
+        console.log('process.env.NODE_ENV',process.env.NODE_ENV );
+        
+        if (process.env.NODE_ENV === 'developmen') {
+          return (
+            <li>
+              
+              <a href={'http://localhost:5000/auth/fake'}>Login With Fake</a>
+            </li>
+          );
+        } else {
+          return (
+            <li>  
+              <a href={'http://localhost:5000/auth/google'}>Login With Google</a>
+            </li>
+          );
+        }
+        
       default:
         return [
           <li key="3" style={{ margin: '0 10px' }}>
@@ -44,6 +56,8 @@ class Header extends Component {
 }
 
 function mapStateToProps({ auth }) {
+  console.log('Auth->>>>>>>>>>>>>>', auth);
+  
   return { auth };
 }
 

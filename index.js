@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
+const atob = require('atob');
+
+
 
 if (process.env.NODE_ENV === 'production') {
 	require('dotenv').config();
@@ -15,10 +18,29 @@ require('./services/passport');
 require('./services/cache');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongoURI, { useMongoClient: true });
+console.log('keys.mongoURI', keys.mongoURI);
+
+mongoose.connect(keys.mongoURI, { useMongoClient: true }).catch(err=>{
+	console.log('err',err);
+	
+});
+const User = mongoose.model('User');
+
+// async function middleware (req,res,next){
+// 	const encoded = req.headers.cookie.slice(8,72)
+// 	const decoded= JSON.parse(atob(encoded)).passport.user;
+// 	console.log('decoded--------------------->', encoded);
+	
+// 	const existingUser = await User.findOne({ _id: decoded });
+// 	console.log('existing user data---------------------->', existingUser.id);
+
+// 	//if (existingUser) req.user = decoded;
+	
+// 	if( next ){ next() }
+// }
 
 const app = express();
-
+// app.use(middleware);
 app.use(bodyParser.json());
 app.use(
 	cookieSession({
@@ -26,6 +48,8 @@ app.use(
 		keys: [keys.cookieKey]
 	})
 );
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 

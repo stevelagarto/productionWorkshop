@@ -14,11 +14,12 @@ describe("When logged in", async () => {
   let sessionSig;
   let existingUser;
   let result;
+  let newBlog;
 
   beforeAll(async (done) => {
    try {
       User.collection.drop();
-      //Blog.collection.drop();
+      Blog.collection.drop();
        user = await new User({
         googleId: "123456789",
         displayName: "Testing Name1"
@@ -42,7 +43,7 @@ describe("When logged in", async () => {
     });
 
     try {
-      await blog.save();
+      newBlog = await blog.save();
       done()
     } catch (err) {
       res.send(400, err);
@@ -93,7 +94,7 @@ describe("When logged in", async () => {
         Cookie: `session=${session}; session.sig=${sessionSig};`
       }
     });
-    expect([res.data]).toEqual(mock);
+    expect(res.data).toEqual(newBlog);
   });
 
   test("Fetch User", async () => {

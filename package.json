@@ -10,12 +10,12 @@
     "cypress:open": "cypress open",
     "start": "NODE_ENV=production node index.js",
     "server": "NODE_ENV=DEV nodemon index.js --ignore tests",
-    "server1": "NODE_ENV=test nodemon index.js --ignore tests",
+    "testserver": "NODE_ENV=test nodemon index.js ",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "dev1": "concurrently \"npm run server1\" \"npm run client\"",
+    "testdev": "concurrently \"npm run testserver\" \"npm run test\"",
     "build": "npm install --prefix client && npm run build --prefix client",
-    "test": " jest"
+    "test": "jest --watch"
   },
   "author": "",
   "license": "ISC",

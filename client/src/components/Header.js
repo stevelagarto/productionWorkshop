@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
@@ -9,9 +9,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { green } from '@material-ui/core/colors';
 import SettingsIcon from '@material-ui/icons/Settings';
+import Sidemenu from './Sidemenu'
 
 
 const useStyles = makeStyles(theme => ({
@@ -23,12 +22,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-
 function Header (props) {
   const classes = useStyles();
- let print = null;
- console.log('props.auth', props.auth);
- 
+  let print = null;
+
     switch (props.auth) {
       case null:
         print = null;
@@ -50,18 +47,19 @@ function Header (props) {
           <>
           <MediaQuery maxWidth={600}>
             <li key="4" style={{ margin: '0 10px' }}>
-            <PopupState variant="popover" popupId="demo-popup-menu">
+            
+            
+            {/* <PopupState variant="popover" popupId="demo-popup-menu">
             {popupState => (
               <React.Fragment>
                 <div variant="contained" color="primary" {...bindTrigger(popupState)}>
                 <IconButton
-        aria-label="more"
-        aria-controls="long-menu"
-        aria-haspopup="true"
-        
-      >
-        <MenuIcon color="secondary"  style={{ fontSize: '28' }}/>
-      </IconButton>
+                  aria-label="more"
+                  aria-controls="long-menu"
+                  aria-haspopup="true"
+                >
+                  <MenuIcon color="secondary"  style={{ fontSize: '28' }}/>
+                </IconButton>
                 </div>
                 <Menu MenuListProps={{ disablePadding: true }}{...bindMenu(popupState)}>
                   <MenuItem onClick={popupState.close}><Link to="/blogs">My Blogs</Link></MenuItem>
@@ -69,7 +67,11 @@ function Header (props) {
                 </Menu>
               </React.Fragment>
             )}
-          </PopupState>
+          </PopupState> */}
+
+          <Sidemenu/>
+
+
             </li>
           </MediaQuery>
           

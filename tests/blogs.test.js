@@ -77,7 +77,7 @@ describe("When logged in", async () => {
       ];
       expect(result.data).toEqual(mock);
     } catch (error) {
-      console.log('error', error);
+      //console.log('error', error);
       
     } finally {
       done();

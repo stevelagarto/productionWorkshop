@@ -35,7 +35,7 @@ class BlogFormReview extends Component {
         </button>
         <button className="green btn-flat right white-text">
           Save Blog
-          <i className="material-icons right">email</i>
+
         </button>
       </div>
     );

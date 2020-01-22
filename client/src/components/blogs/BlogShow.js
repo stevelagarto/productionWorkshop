@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchBlog } from '../../actions';
+import Button from '@material-ui/core/Button';
 
 class BlogShow extends Component {
   componentDidMount() {
@@ -20,7 +21,12 @@ class BlogShow extends Component {
     }
   }
 
+  goBack() {
+    this.props.history.goBack();
+  }
+
   render() {
+    const { history } = this.props;
     if (!this.props.blog) {
       return '';
     }
@@ -32,6 +38,13 @@ class BlogShow extends Component {
         <h3>{title}</h3>
         <p>{content}</p>
         {this.renderImage()}
+       
+                <Button variant="contained" color="primary" onClick={() => history.goBack()}>
+                Go back
+                </Button>
+              
+        
+        
       </div>
     );
   }

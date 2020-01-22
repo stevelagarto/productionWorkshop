@@ -31,7 +31,6 @@ class BlogForm extends Component {
           </Link>
           <button type="submit" className="teal btn-flat right white-text">
             Next
-            <i className="material-icons right">done</i>
           </button>
         </form>
       </div>

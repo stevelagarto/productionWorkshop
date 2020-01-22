@@ -9,6 +9,20 @@ import Dashboard from './Dashboard';
 import BlogNew from './blogs/BlogNew';
 import BlogShow from './blogs/BlogShow';
 
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+        main: '#47487e'
+      },
+      secondary: {
+        main: '#FFFFFF'
+      }
+    }
+  },
+)
+
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
@@ -16,10 +30,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <BrowserRouter>
+     <MuiThemeProvider theme={theme}>
+     <BrowserRouter>
+      
+        
           <div className='test'>
             <Header />
+            <div className="container">
             <Switch>
               <Route path="/blogs/new" component={BlogNew} />
               <Route exact path="/blogs/:_id" component={BlogShow} />
@@ -27,8 +44,9 @@ class App extends Component {
               <Route path="/" component={Landing} />
             </Switch>
           </div>
-        </BrowserRouter>
       </div>
+        </BrowserRouter>
+      </MuiThemeProvider>
     );
   }
 }

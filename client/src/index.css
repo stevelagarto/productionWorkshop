@@ -1,0 +1,47 @@
+.card .card-action {
+  background-color: inherit;
+  border-top: 1px solid rgba(160,160,160,0.2);
+  position: relative;
+  padding: 0px 0px;
+  margin: 0px;
+}
+
+.card-action1 {
+  background-color: inherit;
+  border-top: 1px solid rgba(160,160,160,0.2);
+  position: relative;
+  padding: 0px 0px;
+  margin: 0px;
+  
+}
+
+.indigo {
+  background-color: #3e3f70 !important;
+}
+
+.mycolor{
+  color: black;
+}
+
+Link {
+  color: white;
+}
+
+a{
+  color: #3e3f70;
+}
+
+
+.MuiList-padding {
+  padding: 0px; 
+}
+
+.inconsolata {
+  font-family: 'Inconsolata', monospace;
+}
+
+.logo-icon {
+  margin-right: 7px;
+  margin-bottom: 5px;
+  vertical-align: middle;
+}

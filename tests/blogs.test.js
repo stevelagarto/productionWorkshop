@@ -94,7 +94,7 @@ describe("When logged in", async () => {
         Cookie: `session=${session}; session.sig=${sessionSig};`
       }
     });
-    expect(res.data).toEqual(newBlog);
+    expect([res.data]).toEqual(mock);
   });
 
   test("Fetch User", async () => {

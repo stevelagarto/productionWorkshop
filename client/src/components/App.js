@@ -8,6 +8,7 @@ import Landing from './Landing';
 import Dashboard from './Dashboard';
 import BlogNew from './blogs/BlogNew';
 import BlogShow from './blogs/BlogShow';
+import BlogEdit from './blogs/BlogEdit';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
@@ -27,6 +28,13 @@ const App = ({ fetchUser}) => {
   useEffect( () => {
     fetchUser();
   },[])
+  
+  function handleSubmit(values) {
+
+   
+      // const { submitBlog, history, formValues } = props;
+     console.log('VALUESSSSS', values)
+   }
  
   return (
     <MuiThemeProvider theme={theme}>
@@ -35,8 +43,9 @@ const App = ({ fetchUser}) => {
           <Header />
           <div className="container">
           <Switch>
+            <Route exact path="/blogs/edit/:_id" component={BlogEdit} onSubmit={handleSubmit} />
             <Route path="/blogs/new" component={BlogNew} />
-            <Route exact path="/blogs/:_id" component={BlogShow} />
+            <Route exact path="/blogs/:_id" component={BlogShow}  />
             <Route path="/blogs" component={Dashboard} />
             <Route path="/" component={Landing} />
           </Switch>

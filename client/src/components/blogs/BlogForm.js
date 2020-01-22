@@ -13,7 +13,7 @@ const BlogForm = ({onBlogSubmit, handleSubmit}) => {
       <Field
         key={name}
         component={BlogField}
-        type="textArea"
+        type="text"
         label={label}
         name={name}
       />

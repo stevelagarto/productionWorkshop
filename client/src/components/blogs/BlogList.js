@@ -22,6 +22,9 @@ const BlogList = ({fetchBlogs, blogs}) => {
             <Link to={`/blogs/${blog._id}`}> 
               <UIButton title="Read Me" />
             </Link>
+            <Link to={`/blogs/edit/${blog._id}`}> 
+              <UIButton title="Edit" />
+            </Link>
           </div>
         </div>
       </div>

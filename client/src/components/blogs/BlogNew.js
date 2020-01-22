@@ -6,6 +6,8 @@ import BlogFormReview from './BlogFormReview';
 
 const BlogNew =  (props) => {
   const [state, setState] = useState({ showFormReview: false });
+  console.log('state--------------->', state);
+  
   let render=null;
  
   if (state.showFormReview) {

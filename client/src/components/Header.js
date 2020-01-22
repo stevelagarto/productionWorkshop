@@ -49,14 +49,13 @@ const Header = (props) => {
           
           <MediaQuery minWidth={601}>
             <li key="3" style={{ margin: '0 10px' }}>
-            <Link to="/blogs"></Link>
+            
               <div className={classes.root}>
-             
                 <Button variant="contained" color="primary" size="small">
-                  My Blogs
+                <Link to="/blogs"> My Blogs</Link>
                 </Button>
-                
               </div>
+              
             </li>
           
             <li key="5" style={{ margin: '0 10px' }}>

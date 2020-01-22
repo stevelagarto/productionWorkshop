@@ -31,6 +31,17 @@ export const submitBlog = (values, file, history) => async dispatch => {
   dispatch({ type: FETCH_BLOG, payload: res.data });
 };
 
+export const editBlog = (values, file, history) => async dispatch => {
+  // const res = await axios.post('/api/blogs', {
+  //   ...values,
+  // });
+console.log('INSIDE EDIT ACTION');
+
+  //history.push('/blogs');
+  //dispatch({ type: FETCH_BLOG, payload: 'hey' });
+};
+
+
 export const fetchBlogs = () => async dispatch => {
   const res = await axios.get('/api/blogs');
 

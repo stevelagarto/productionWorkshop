@@ -32,7 +32,6 @@ const BlogFormReview = (props) => {
       </button>
       <button className="green btn-flat right white-text">
         Save Blog
-
       </button>
     </div>
   );

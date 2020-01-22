@@ -5,7 +5,7 @@ import { fetchBlog } from '../../actions';
 import Button from '@material-ui/core/Button';
 import { Field, reduxForm, change } from 'redux-form'
 
-const EditForm = ({handleSubmit, title, content, blog, history, initialize, dispatch}) => {
+const EditForm = ({handleSubmit, title, content, blog, history, initialize, dispatch, submit}) => {
   useEffect(() => {
     initialize({ title: title, content: content });
     //dispatch(change('EditForm', 'title', 'value'));
@@ -15,14 +15,10 @@ const EditForm = ({handleSubmit, title, content, blog, history, initialize, disp
     return '';
   }
   console.log('Title', title);
-  function myFunction (values) {
-    console.log('values', values);
-    
-  }
 
   return (
     <div>
-      <form onSubmit={handleSubmit(myFunction)}>
+      <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="title">Title</label>
         <Field name="title"  component="input" type="text" />

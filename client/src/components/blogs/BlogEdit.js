@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchBlog } from '../../actions';
+import { fetchBlog, editBlog } from '../../actions';
 import Button from '@material-ui/core/Button';
 import { Field, reduxForm } from 'redux-form'
 import EditForm from './EditForm'
 
-let BlogEdit= ({fetchBlog, match, blog, history}) => {
+let BlogEdit= ({fetchBlog, match, blog, history, editBlog}) => {
   useEffect(()=>{
     fetchBlog(match.params._id);
   },[fetchBlog, match.params._id])
   
   console.log('PROPSSSS', blog);
-  
+  function submit (values) {
+    console.log('values', values);
+    editBlog();
+    
+  }
 
   if (!blog) {
     return '';
@@ -22,6 +26,7 @@ let BlogEdit= ({fetchBlog, match, blog, history}) => {
 
   return (
     <EditForm 
+      onSubmit={submit}
       title={title} 
       content={content} 
       blog={blog}
@@ -34,4 +39,4 @@ function mapStateToProps({ blogs }, ownProps) {
   return { blog: blogs[ownProps.match.params._id] };
 }
 
-export default connect(mapStateToProps, { fetchBlog })(BlogEdit);
+export default connect(mapStateToProps, { fetchBlog, editBlog })(BlogEdit);

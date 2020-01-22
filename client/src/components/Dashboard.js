@@ -2,13 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import BlogList from './blogs/BlogList';
 import { makeStyles } from '@material-ui/core/styles';
-import Icon from '@material-ui/core/Icon';
 import { loadCSS } from 'fg-loadcss';
 import MediaQuery from 'react-responsive';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-
 
 const useStyles = makeStyles(theme => ({
   root: {

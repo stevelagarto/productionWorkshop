@@ -1,53 +1,46 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchBlog } from '../../actions';
 import Button from '@material-ui/core/Button';
 
-class BlogShow extends Component {
-  componentDidMount() {
-    this.props.fetchBlog(this.props.match.params._id);
-  }
+const BlogShow = ({fetchBlog, match, blog, history}) => {
+  useEffect(()=>{
+    fetchBlog(match.params._id);
+  },[])
 
-  renderImage() {
-    if (this.props.blog.imageUrl) {
+  function renderImage() {
+    if (blog.imageUrl) {
       return (
-        <img
+        <img alt="none"
           src={
             'https://s3-us-west-2.amazonaws.com/my-blog-bucket-123/' +
-            this.props.blog.imageUrl
+            blog.imageUrl
           }
         />
       );
     }
   }
 
-  goBack() {
-    this.props.history.goBack();
+  function goBack() {
+    history.goBack();
+  }
+  
+  if (!blog) {
+    return '';
   }
 
-  render() {
-    const { history } = this.props;
-    if (!this.props.blog) {
-      return '';
-    }
+  const { title, content } = blog;
 
-    const { title, content } = this.props.blog;
-
-    return (
-      <div>
-        <h3>{title}</h3>
-        <p>{content}</p>
-        {this.renderImage()}
-       
-                <Button variant="contained" color="primary" onClick={() => history.goBack()}>
-                Go back
-                </Button>
-              
-        
-        
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h3>{title}</h3>
+      <p>{content}</p>
+      {renderImage()}
+      <Button variant="contained" color="primary" onClick={() => history.goBack()}>
+        Go back
+      </Button>
+    </div>
+  );
 }
 
 function mapStateToProps({ blogs }, ownProps) {

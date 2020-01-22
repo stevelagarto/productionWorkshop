@@ -28,7 +28,7 @@ Link {
 }
 
 a{
-  color: #3e3f70;
+  color: #313131;
 }
 
 
@@ -44,4 +44,18 @@ a{
   margin-right: 7px;
   margin-bottom: 5px;
   vertical-align: middle;
+}
+
+button:focus {
+  outline: none;
+  background-color:transparent;
+}
+.MuiListItemIcon-root {
+
+  min-width: 30px;
+
+}
+
+.listItemIcon {
+  min-width: 10px;
 }

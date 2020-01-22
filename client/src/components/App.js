@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
@@ -23,32 +23,28 @@ const theme = createMuiTheme({
   },
 )
 
-class App extends Component {
-  componentDidMount() {
-    this.props.fetchUser();
-  }
-
-  render() {
-    return (
-     <MuiThemeProvider theme={theme}>
-     <BrowserRouter>
-      
-        
-          <div className='test'>
-            <Header />
-            <div className="container">
-            <Switch>
-              <Route path="/blogs/new" component={BlogNew} />
-              <Route exact path="/blogs/:_id" component={BlogShow} />
-              <Route path="/blogs" component={Dashboard} />
-              <Route path="/" component={Landing} />
-            </Switch>
-          </div>
+const App = ({ fetchUser}) => {
+  useEffect( () => {
+    fetchUser();
+  },[])
+ 
+  return (
+    <MuiThemeProvider theme={theme}>
+      <BrowserRouter>
+        <div className='test'>
+          <Header />
+          <div className="container">
+          <Switch>
+            <Route path="/blogs/new" component={BlogNew} />
+            <Route exact path="/blogs/:_id" component={BlogShow} />
+            <Route path="/blogs" component={Dashboard} />
+            <Route path="/" component={Landing} />
+          </Switch>
+        </div>
       </div>
-        </BrowserRouter>
-      </MuiThemeProvider>
-    );
-  }
+      </BrowserRouter>
+    </MuiThemeProvider>
+  );
 }
 
 export default connect(null, actions)(App);

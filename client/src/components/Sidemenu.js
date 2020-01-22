@@ -1,29 +1,30 @@
-import React from 'react';
+import React, { useState} from 'react';
+import { Link } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
-
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: 'auto',
-  },
-});
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import Divider from '@material-ui/core/Divider';
 
 export default function TemporaryDrawer() {
+  const useStyles = makeStyles({
+    list: {
+      width: 150,
+    },
+    fullList: {
+      width: 'auto',
+    },
+  });
+
   const classes = useStyles();
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     top: false,
     left: false,
     bottom: false,
@@ -46,26 +47,29 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-          <ListItem button key={'logout'}>
-            <ListItemIcon> <InboxIcon /> </ListItemIcon>
-            <ListItemText primary={'logout'} />
+      <Link to="/blogs">
+        <ListItem button key={'My Blogs'}>
+          <ListItemIcon style={{minWidth: '25px'}}> 
+            <AssignmentIcon /> 
+          </ListItemIcon>
+          <ListItemText primary={'My Blogs'} />
+        </ListItem></Link>
+        <a href='http://localhost:5000/auth/logout'>
+          <ListItem button key={'Logout'}>
+            <ListItemIcon style={{minWidth: '25px'}}> <ExitToAppIcon/> 
+              </ListItemIcon>
+            <ListItemText primary={'Logout'} />
           </ListItem>
+        </a>
       </List>
+      <Divider />
     </div>
   );
 
-  
-
   return (
     <div>
-
-
-    <IconButton
-                  aria-label="more"
-                  aria-controls="long-menu"
-                  aria-haspopup="true"
-                >
-      <MenuIcon color="secondary"  style={{ fontSize: '28' }} onClick={toggleDrawer('right', true)}>Open Right</MenuIcon>
+      <IconButton onClick={toggleDrawer('right', true)}>
+        <MenuIcon color="secondary"  style={{ fontSize: '28' }} >Open Right</MenuIcon>
       </IconButton>
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
         {sideList('right')}

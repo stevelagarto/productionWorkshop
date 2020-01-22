@@ -4,14 +4,8 @@ import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
-import MenuIcon from '@material-ui/icons/Menu';
-import IconButton from '@material-ui/core/IconButton';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Sidemenu from './Sidemenu'
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,8 +15,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-
-function Header (props) {
+const Header = (props) => {
   const classes = useStyles();
   let print = null;
 
@@ -47,28 +40,7 @@ function Header (props) {
           <>
           <MediaQuery maxWidth={600}>
             <li key="4" style={{ margin: '0 10px' }}>
-            
-            
-            {/* <PopupState variant="popover" popupId="demo-popup-menu">
-            {popupState => (
-              <React.Fragment>
-                <div variant="contained" color="primary" {...bindTrigger(popupState)}>
-                <IconButton
-                  aria-label="more"
-                  aria-controls="long-menu"
-                  aria-haspopup="true"
-                >
-                  <MenuIcon color="secondary"  style={{ fontSize: '28' }}/>
-                </IconButton>
-                </div>
-                <Menu MenuListProps={{ disablePadding: true }}{...bindMenu(popupState)}>
-                  <MenuItem onClick={popupState.close}><Link to="/blogs">My Blogs</Link></MenuItem>
-                  <MenuItem onClick={popupState.close}><a href='http://localhost:5000/auth/logout'>Logout</a></MenuItem>
-                </Menu>
-              </React.Fragment>
-            )}
-          </PopupState> */}
-
+          
           <Sidemenu/>
 
 

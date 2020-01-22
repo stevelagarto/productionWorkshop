@@ -1,6 +1,7 @@
 import React from 'react';
 
-export default ({ input, label, meta: { error, touched } }) => {
+export default ({ input, label, type,  meta: { error, touched } }) => {
+  console.log('META--------------->', type)
   return (
     <div className={input.name}>
       <label>{label}</label>
